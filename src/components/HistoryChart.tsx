@@ -1,0 +1,8 @@
+import type { HistoryPoint } from '../../shared/types';
+import { percent, time } from '../lib/ui';
+export function HistoryChart({ points }: { points: HistoryPoint[] }) {
+ const valid = points.filter(point => point.sectionsPercent != null);
+ if (!valid.length) return <div className="chart-empty"><div className="chart-grid"/><span>O histórico começa com a primeira publicação oficial coletada.</span><small>Cada ponto representa uma versão observada nesta instalação.</small></div>;
+ const line = valid.map((point, index) => `${index ? 'L' : 'M'}${25 + (valid.length === 1 ? 0 : index / (valid.length - 1)) * 630},${175 - Math.max(0, Math.min(100, point.sectionsPercent || 0)) * 1.5}`).join(' ');
+ return <div className="history-chart"><svg viewBox="0 0 680 210" role="img" aria-label={`Histórico de apuração: ${valid.length} versões; última ${percent(valid[valid.length - 1].sectionsPercent)}`}><line x1="25" x2="655" y1="25" y2="25" className="chart-axis"/><line x1="25" x2="655" y1="100" y2="100" className="chart-axis"/><line x1="25" x2="655" y1="175" y2="175" className="chart-axis"/><path d={line + 'L655,175 L25,175 Z'} fill="rgba(177,206,82,.1)"/><path d={line} stroke="#96b43b" strokeWidth="3" fill="none"/>{valid.map((point, index) => <circle key={point.id} cx={25 + (valid.length === 1 ? 0 : index / (valid.length - 1)) * 630} cy={175 - Math.max(0,Math.min(100,point.sectionsPercent || 0))*1.5} r="4" fill="#96b43b"><title>{time(point.generatedAt || point.observedAt)}: {percent(point.sectionsPercent)}</title></circle>)}<text x="25" y="201">{time(valid[0].generatedAt || valid[0].observedAt)}</text><text x="655" y="201" textAnchor="end">{time(valid[valid.length-1].generatedAt || valid[valid.length-1].observedAt)}</text></svg></div>;
+}

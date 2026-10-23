@@ -1,0 +1,19 @@
+node_modules/
+dist/
+data/
+.npm-cache/
+*.log
+test-results/
+.env
+.env.*
+*.local
+# exportações geradas pelo painel (CSV/JSON baixados do TSE)
+exportacoes/
+# configurações locais de editor e ferramentas
+.claude/
+.vscode/
+.idea/
+*.tsbuildinfo
+Thumbs.db
+desktop.ini
+.DS_Store

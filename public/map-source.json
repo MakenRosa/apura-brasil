@@ -1,0 +1,9 @@
+{
+  "provider": "Instituto Brasileiro de Geografia e Estatística (IBGE)",
+  "description": "Malha simplificada do Brasil dividida pelas 27 unidades da federação, API de malhas v3, qualidade mínima.",
+  "source": "https://servicodados.ibge.gov.br/api/v3/malhas/paises/BR?formato=application/vnd.geo+json&qualidade=minima&intrarregiao=UF",
+  "documentation": "https://servicodados.ibge.gov.br/api/docs/malhas?versao=3",
+  "retrievedOn": "2026-10-04",
+  "features": 27,
+  "use": "Somente cartografia. Todos os dados eleitorais são fornecidos pelo TSE."
+}
