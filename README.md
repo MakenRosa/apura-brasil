@@ -15,6 +15,14 @@ Painel local para acompanhar a apuração das eleições pelos arquivos público
 
 ![Municípios de São Paulo no 1º turno, com a votação do estado](docs/imagens/sp-municipios.png)
 
+## English summary
+
+A local dashboard for Brazilian election results, using public TSE election files and IBGE map data. React and TypeScript render the interface; a Node.js server manages caching, request coalescing, source attribution, and historical snapshots. It runs on your computer and is not an official TSE or IBGE product.
+
+## Validação
+
+A [CI](https://github.com/MakenRosa/apura-brasil/actions/workflows/ci.yml) executa verificação de tipos, testes com capturas locais e build. O comando adicional `npm run validate` inicia uma instância isolada com a rede externa bloqueada; ele não faz parte do workflow atual. Essa validação permite reproduzir os cenários guardados, mas não garante a disponibilidade futura dos serviços do TSE e do IBGE. Consulte [evidências e limitações](docs/VALIDACAO.md).
+
 ## Stack
 
 React 19 · TypeScript · Vite · servidor HTTP em Node.js sem dependências · `node:test`
